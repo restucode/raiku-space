@@ -94,6 +94,7 @@ body.hovering .cursor-circle {
     text-shadow: 0 0 10px var(--neon);
 }
 
+/* Default Desktop Carousel View */
 .carousel-view {
     width: 100%; height: 100vh;
     display: flex; align-items: center;
@@ -252,49 +253,95 @@ body.hovering .cursor-circle {
     letter-spacing: 1px; font-family: 'Courier New', monospace;
 }
 
+/* --- PERBAIKAN RESPONSIVE MOBILE --- */
 @media (max-width: 768px) {
     :root {
         --card-w: 200px; 
-        --card-h: 280px;
+        --card-h: 260px; /* Sedikit lebih kecil agar aman secara vertikal */
     }
+    
     .top-bar { 
         top: 20px; left: 20px; right: 20px; 
     }
+    
     .brand { 
         font-size: 20px; 
     }
+    
     .status-icons { 
         gap: 10px; font-size: 12px; 
     }
+    
+    /* Navigasi di Atas */
     .category-nav { 
-        top: 75px; left: 0; width: 100%;
+        top: 70px; left: 0; width: 100%;
         flex-direction: row; justify-content: center; 
         gap: 20px; padding: 0 20px;
+        z-index: 30; /* Di atas carousel */
     }
+    
     .cat-item { 
         font-size: 12px; 
     }
+    
     .cat-item.active { 
         font-size: 14px; border-left: none; 
         border-bottom: 2px solid var(--neon); 
         padding-left: 0; padding-bottom: 5px; 
     }
+    
+    /* --- ZONA AMAN CAROUSEL (KUNCI PERBAIKAN) --- */
+    .carousel-view {
+        /* Hapus height: 100vh untuk mobile */
+        height: auto;
+        /* Gunakan positioning absolute untuk mendefinisikan 'kotak tengah' */
+        position: absolute;
+        top: 15%;    /* Jarak aman dari navigasi atas */
+        bottom: 35%; /* Jarak aman dari panel info bawah */
+        width: 100%;
+        /* Pastikan card ada di tengah kotak ini */
+        display: flex;
+        align-items: center; 
+        /* Reset padding jika ada */
+        padding: 0;
+    }
+
+    .card.active {
+        transform: scale(1.05);
+    }
+
+    /* Panel Info di Bawah */
     .info-panel { 
-        left: 20px; right: 20px; bottom: 60px; 
+        left: 20px; right: 20px; 
+        bottom: 80px; /* Posisi tetap di bawah */
         text-align: center; width: auto;
+        z-index: 30;
     }
+    
     .info-title { 
-        font-size: 32px; 
+        font-size: 28px; margin-bottom: 5px;
     }
+    
     .info-desc { 
         border: none; border-top: 2px solid var(--neon); 
         padding-top: 10px; padding-left: 0; 
+        margin-bottom: 10px; font-size: 14px;
     }
+    
     .creator-tag {
-        justify-content: center; padding-left: 0;
+        justify-content: center; padding-left: 0; margin-bottom: 15px;
     }
+    
+    .btn-launch {
+        padding: 10px 30px; font-size: 14px;
+    }
+
+    .progress-hud {
+        bottom: 30px;
+    }
+
     .cursor-dot, .cursor-circle { display: none; }
     * { cursor: auto; }
-    .prog-seg { width: 20px; }
-    .prog-seg.active { width: 30px; }
+    .prog-seg { width: 15px; }
+    .prog-seg.active { width: 25px; }
 }

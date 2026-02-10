@@ -112,14 +112,21 @@ function triggerGlitch(cardElement) {
 }
 
 function centerTrack() {
-    const width = window.innerWidth < 768 ? 200 : 260;
-    const gap = 50;
+    // Deteksi jika lebar layar <= 768px (Mobile)
+    const isMobile = window.innerWidth <= 768;
+    // Ukuran kartu di JS harus sama dengan di CSS (--card-w)
+    const width = isMobile ? 200 : 260; 
+    const gap = 50; 
+    
+    // Perhitungan posisi tengah
     const centerOffset = - (width / 2);
     const pos = -(curTool * (width + gap)) + centerOffset;
+    
     track.style.transform = `translateX(${pos}px)`;
     
     Array.from(track.children).forEach((c, i) => {
         if(i !== curTool) c.style.transform = `scale(0.85) rotateY(10deg)`;
+        else c.style.transform = isMobile ? 'scale(1.05)' : 'scale(1.1)';
     });
 }
 
