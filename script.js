@@ -24,7 +24,11 @@ const db = [
             { id: 'yanok', title: "Brand Kit by Yanok", creator: "Yanok", creatorLink: "https://x.com/crypto_yanok", icon: "fa-solid fa-puzzle-piece", image: "img/yanok.jpg", link: "https://raiku-media-kit.notion.site/Raiku-Brand-Kit-by-yanok-2fd87288700980079701eb3ea5e97863", desc: "Alternative design variants for advanced users." },
             { id: 'pfp', title: "PFP Generator", creator: "Raven", creatorLink: "https://x.com/klvndrgn", icon: "fa-solid fa-face-smile-wink", image: "img/pfp.png", link: "https://raiku.pics/", desc: "Customize your PFP." },
             { id: 'gallery', title: "Kersa Artwork", creator: "Kersa", creatorLink: "https://x.com/kersa1n", icon: "fa-solid fa-images", image: "img/gallery.png", link: "https://kersa.netlify.app/", desc: "Digital Art Collection Raiku by Kersa" },
-            { id: 'raikurun', title: "Raiku Run", creator: "Kersa", creatorLink: "https://x.com/kersa1n", icon: "fa-solid fa-microchip", image: "img/raikurun.png", link: "https://raiku-run.netlify.app/", desc: "Raiku Run and the secret." }
+            { id: 'raikurun', title: "Raiku Run", creator: "Kersa", creatorLink: "https://x.com/kersa1n", icon: "fa-solid fa-microchip", image: "img/raikurun.png", link: "https://raiku-run.netlify.app/", desc: "Raiku Run and the secret." },
+            { id: 'raikuquizshinee', title: "Raiku Quiz by Shine", creator: "Shine", creatorLink: "https://x.com/EnjelSun", icon: "fa-solid fa-images", image: "img/raiku-quiz-shinee.png", link: "https://www.raiku-quiz.xyz/", desc: "Are you really Raiku fam? Find the answer here." },
+            { id: 'raikuwrapped25', title: "Raiku Wrapped 2025", creator: "KC🌊", creatorLink: "https://x.com/kongclaves", icon: "fa-solid fa-images", image: "img/raiku-wrapped25.png", link: "https://raiku-wrapped.vercel.app/", desc: "Raiku wrapped your 2025 community journey." },
+            { id: 'raikufunblock', title: "Raiku Fun Block", creator: "realsir ./", creatorLink: "https://x.com/realsirandrew", icon: "fa-solid fa-images", image: "img/raikufunblock.png", link: "https://raiku-fun-block.vercel.app/", desc: "Discover a variety of games and contributions from realsir ./." },
+
         ]
     }
 ];
