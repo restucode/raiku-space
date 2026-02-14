@@ -55,7 +55,7 @@ const db = [
                 title: "Why the Raiku Community Creates High-Quality Content", 
                 date: "9 FEB 2026",
                 image: "article/art3.webp", 
-                link: "Raiku — progress is underway…", 
+                link: "https://yanok.medium.com/raiku-an-improvement-or-a-major-update-for-solana-919a8d640729", 
                 desc: "Raiku (@raikucom) is a Web3 infrastructure project built on the Solana blockchain that aims to solve one of Solana....",
                 creator: "Yanok",
                 creatorLink: "https://x.com/crypto_yanok"
