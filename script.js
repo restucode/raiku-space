@@ -52,7 +52,7 @@ const db = [
             },
             { 
                 id: 'art3', 
-                title: "Why the Raiku Community Creates High-Quality Content", 
+                title: "Raiku — progress is underway", 
                 date: "9 FEB 2026",
                 image: "article/art3.webp", 
                 link: "https://yanok.medium.com/raiku-an-improvement-or-a-major-update-for-solana-919a8d640729", 
