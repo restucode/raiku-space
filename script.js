@@ -1,6 +1,7 @@
 const db = [
     {
         name: "OFFICIAL LINKS",
+        type: "standard",
         items: [
             { id: 'web', title: "Raiku Website", creator: "Raiku Official", creatorLink: "https://x.com/raikucom", icon: "fa-solid fa-globe", link: "https://www.raiku.com/", desc: "The official home of Raiku ecosystem." },
             { id: 'org', title: "Raiku Foundation", creator: "Raiku Official", creatorLink: "https://x.com/raikucom", icon: "fa-solid fa-building-columns", link: "https://x.com/raikuorg", desc: "Official organization and ecosystem governance." },
@@ -18,6 +19,7 @@ const db = [
     },
     {
         name: "COMMUNITY TOOLS",
+        type: "standard",
         items: [
             { id: 'handbook', title: "Raiku Handbook", creator: "Shubh", creatorLink: "https://x.com/01Rajpurohit", icon: "fa-solid fa-book-atlas", image: "img/handbook.png", link: "https://www.raikuhandbook.org/", desc: "The simple community guide and ecosystem manual." },
             { id: 'hub', title: "Raiku HUB", creator: "demon666", creatorLink: "https://x.com/0xUnemployment", icon: "fa-solid fa-network-wired", image: "img/raiku-hub.png", link: "https://www.raiku-hub.xyz/", desc: "Raiku hub for top raiku chads" },
@@ -32,6 +34,42 @@ const db = [
             { id: 'raikubingo', title: "Raiku Bingo", creator: "Kersa", creatorLink: "https://x.com/kersa1n", icon: "fa-solid fa-images", image: "img/raikubingo.png", link: "https://bingo.raiku.space/", desc: "What your Raiku Bingo? Fill it." },
             { id: 'flappyryku', title: "Flappy Ryku", creator: "Melori", creatorLink: "https://x.com/MeloriKt", icon: "fa-solid fa-images", image: "img/flappyryku.png", link: "https://flappy-melori-projects.vercel.app/", desc: "Just like the name, you tap Ryku through the pipes and try to get the highest score possible." },
             { id: 'raikugameboy', title: "Raiku Gameboy", creator: "Victoren", creatorLink: "https://x.com/0xvictoren/", icon: "fa-solid fa-images", image: "img/raikugameboy.png", link: "https://raiku-gameboy.vercel.app/", desc: "Play Raiku Gameboy now!" },
+        ]
+    },
+    {
+        name: "GOOD READ",
+        type: "article",
+        items: [
+            { 
+                id: 'art1', 
+                title: "The Path of Least Resistance", 
+                date: "4 FEB 2026",
+                image: "article/art1.jpg", 
+                link: "https://x.com/_offmylawn/status/2018738146318442571", 
+                desc: "Crypto is a VERY unique industry - it’s the only one in the world where giving away 'free' money is normalized....",
+                creator: "offmylawn",
+                creatorLink: "https://x.com/_offmylawn/"
+            },
+            { 
+                id: 'art3', 
+                title: "Why the Raiku Community Creates High-Quality Content", 
+                date: "9 FEB 2026",
+                image: "article/art3.webp", 
+                link: "Raiku — progress is underway…", 
+                desc: "Raiku (@raikucom) is a Web3 infrastructure project built on the Solana blockchain that aims to solve one of Solana....",
+                creator: "Yanok",
+                creatorLink: "https://x.com/crypto_yanok"
+            },
+            { 
+                id: 'art2', 
+                title: "Why the Raiku Community Creates High-Quality Content", 
+                date: "13 FEB 2026",
+                image: "article/art2.jpg", 
+                link: "https://x.com/Zimydem/status/2022313890936435062", 
+                desc: "The Problem Everyone Sees But No One Fixes....",
+                creator: "Zimy",
+                creatorLink: "https://x.com/Zimydem/"
+            },
 
         ]
     }
@@ -59,23 +97,44 @@ function renderCategories() {
 
 function renderTools() {
     track.innerHTML = '';
-    const tools = db[curCat].items;
+    const currentCategory = db[curCat];
+    const tools = currentCategory.items;
+    const isArticleMode = currentCategory.type === 'article'; 
     
     tools.forEach((t, i) => {
         const card = document.createElement('div');
-        card.className = `card ${i === curTool ? 'active' : ''}`;
+        card.className = `card ${i === curTool ? 'active' : ''} ${isArticleMode ? 'article-card' : ''}`;
         
         let content = '';
-        if(t.image) {
-            content = `<img src="${t.image}" class="card-img" alt="${t.title}">`;
+        if (isArticleMode) {
+            content = `
+                <div class="art-img-container">
+                    <img src="${t.image}" alt="${t.title}" loading="lazy">
+                    <div class="art-date">${t.date}</div>
+                </div>
+                <div class="art-body">
+                    <div class="art-content-wrapper">
+                        <h3>${t.title}</h3>
+                        <p class="art-desc-preview">${t.desc}</p>
+                    </div>
+                    <div class="art-creator-link" onclick="event.stopPropagation(); window.open('${t.creatorLink}', '_blank')">
+                        <i class="fas fa-code"></i> CREATOR: ${t.creator}
+                    </div>
+                    <div class="read-btn">READ ARTICLE <i class="fas fa-arrow-right"></i></div>
+                </div>
+            `;
         } else {
-            content = `<i class="${t.icon} card-icon"></i>`;
+            if(t.image) {
+                content = `<img src="${t.image}" class="card-img" alt="${t.title}">`;
+            } else {
+                content = `<i class="${t.icon} card-icon"></i>`;
+            }
         }
 
         card.innerHTML = `
             <div class="live-overlay"></div>
             <div class="scanner-line"></div>
-            <div class="card-inner">
+            <div class="card-inner ${isArticleMode ? 'inner-article' : ''}">
                 ${content}
             </div>
         `;
@@ -84,9 +143,6 @@ function renderTools() {
             if(curTool === i) launchTool();
             else changeTool(i);
         };
-        card.onmouseenter = () => { document.body.classList.add('hovering'); };
-        card.onmouseleave = () => document.body.classList.remove('hovering');
-
         track.appendChild(card);
     });
 
@@ -95,16 +151,35 @@ function renderTools() {
     renderProgress();
 }
 
+function updateInfo() {
+    const currentCategory = db[curCat];
+    const t = currentCategory.items[curTool];
+    
+    if (currentCategory.type === 'article') {
+        infoPanel.style.display = 'none'; 
+        infoPanel.classList.remove('visible');
+        return; 
+    }
+
+    infoPanel.style.display = 'block';
+    infoPanel.classList.remove('visible');
+    
+    setTimeout(() => {
+        document.getElementById('title').innerText = t.title;
+        document.getElementById('desc').innerText = t.desc;
+        creatorEl.innerHTML = `<i class="fas fa-code"></i> CREATOR: ${t.creator}`;
+        infoPanel.classList.add('visible');
+    }, 100);
+}
+
 function renderProgress() {
     progressHud.innerHTML = '';
     const tools = db[curCat].items;
-    
     tools.forEach((_, i) => {
         const seg = document.createElement('div');
         seg.className = `prog-seg ${i === curTool ? 'active' : ''}`;
         progressHud.appendChild(seg);
     });
-
     const counter = document.createElement('div');
     counter.className = 'prog-counter';
     counter.innerText = `[0${curTool + 1} / 0${tools.length}]`;
@@ -114,39 +189,36 @@ function renderProgress() {
 function triggerGlitch(cardElement) {
     if(!cardElement) return;
     cardElement.classList.add('glitch-active');
-    setTimeout(() => {
-        cardElement.classList.remove('glitch-active');
-    }, 300);
+    setTimeout(() => cardElement.classList.remove('glitch-active'), 300);
 }
 
 function centerTrack() {
-    // Deteksi jika lebar layar <= 768px (Mobile)
     const isMobile = window.innerWidth <= 768;
-    // Ukuran kartu di JS harus sama dengan di CSS (--card-w)
-    const width = isMobile ? 200 : 260; 
-    const gap = 50; 
+    const currentCategory = db[curCat];
     
-    // Perhitungan posisi tengah
+    let width;
+    
+    if (currentCategory.type === 'article') {
+        width = isMobile ? 300 : 400; 
+    } else {
+        width = isMobile ? 200 : 260;
+    }
+
+    const gap = 50; 
     const centerOffset = - (width / 2);
     const pos = -(curTool * (width + gap)) + centerOffset;
     
     track.style.transform = `translateX(${pos}px)`;
     
     Array.from(track.children).forEach((c, i) => {
-        if(i !== curTool) c.style.transform = `scale(0.85) rotateY(10deg)`;
-        else c.style.transform = isMobile ? 'scale(1.05)' : 'scale(1.1)';
+        if(i !== curTool) {
+            c.style.transform = `scale(0.85) rotateY(10deg)`;
+            c.style.opacity = '0.3';
+        } else {
+            c.style.transform = isMobile ? 'scale(1.05)' : 'scale(1.1)';
+            c.style.opacity = '1';
+        }
     });
-}
-
-function updateInfo() {
-    const t = db[curCat].items[curTool];
-    infoPanel.classList.remove('visible');
-    setTimeout(() => {
-        document.getElementById('title').innerText = t.title;
-        document.getElementById('desc').innerText = t.desc;
-        creatorEl.innerHTML = `<i class="fas fa-code"></i> CREATOR: ${t.creator}`;
-        infoPanel.classList.add('visible');
-    }, 100);
 }
 
 function changeCategory(idx) {

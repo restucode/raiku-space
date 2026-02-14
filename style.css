@@ -2,7 +2,7 @@
     --neon: #c0fe38;
     --neon-dim: rgba(192, 254, 56, 0.15);
     --black: #050505;
-    --card-w: 260px;
+    --card-w: 260px; 
     --card-h: 360px;
     --gap: 50px;
     --anim: cubic-bezier(0.19, 1, 0.22, 1);
@@ -44,18 +44,12 @@ body {
 }
 
 .cursor-dot { width: 6px; height: 6px; background: var(--neon); box-shadow: 0 0 10px var(--neon); }
-
 .cursor-circle {
     width: 40px; height: 40px;
     border: 1px solid var(--neon);
     transition: width 0.2s, height 0.2s, background 0.2s;
 }
-
-body.hovering .cursor-circle {
-    width: 60px; height: 60px;
-    background: var(--neon-dim);
-    border-color: transparent;
-}
+body.hovering .cursor-circle { width: 60px; height: 60px; background: var(--neon-dim); border-color: transparent; }
 
 #bgCanvas { position: absolute; top: 0; left: 0; z-index: -2; }
 
@@ -65,13 +59,11 @@ body.hovering .cursor-circle {
     border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;
     z-index: 10; pointer-events: none;
 }
-
 .brand { 
     font-size: 28px; font-weight: 700; letter-spacing: 2px; 
     text-shadow: 0 0 10px var(--neon-dim); 
     display: flex; align-items: center; gap: 12px;
 }
-
 .brand img { height: 1.2em; width: auto; display: block; filter: drop-shadow(0 0 5px var(--neon-dim)); }
 .brand span { color: var(--neon); }
 .status-icons { display: flex; gap: 20px; font-size: 14px; color: #888; font-weight: 600; }
@@ -81,26 +73,22 @@ body.hovering .cursor-circle {
     display: flex; flex-direction: column; gap: 15px;
     z-index: 15;
 }
-
 .cat-item {
     font-size: 14px; color: #555; letter-spacing: 2px;
     transition: 0.3s; padding-left: 10px; border-left: 2px solid transparent;
     cursor: pointer;
 }
-
 .cat-item.active {
     color: var(--neon); font-size: 18px; font-weight: 700;
     border-left: 2px solid var(--neon); padding-left: 20px;
     text-shadow: 0 0 10px var(--neon);
 }
 
-/* Default Desktop Carousel View */
 .carousel-view {
     width: 100%; height: 100vh;
     display: flex; align-items: center;
     overflow: hidden; touch-action: pan-y; 
 }
-
 .track {
     display: flex; gap: var(--gap);
     padding-left: 50vw; padding-right: 50vw;
@@ -133,20 +121,15 @@ body.hovering .cursor-circle {
     font-size: 60px; color: #fff; margin-bottom: 20px;
     transition: 0.3s; filter: drop-shadow(0 0 10px rgba(0,0,0,0.8));
 }
-
 .card-img {
-    width: 100%; height: 100%;
-    object-fit: cover;
-    border-radius: 12px;
-    filter: brightness(0.8);
-    transition: 0.3s;
+    width: 100%; height: 100%; object-fit: cover;
+    border-radius: 12px; filter: brightness(0.8); transition: 0.3s;
 }
 
 .glitch-active .card-icon, .glitch-active .card-img {
     animation: glitch-anim 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
     color: var(--neon);
 }
-
 @keyframes glitch-anim {
     0% { transform: translate(0); }
     20% { transform: translate(-3px, 3px); }
@@ -162,7 +145,6 @@ body.hovering .cursor-circle {
     background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(192, 254, 56, 0.05) 3px);
     pointer-events: none;
 }
-
 .scanner-line {
     position: absolute; top: 0; left: 0; width: 100%; height: 5px;
     background: var(--neon); box-shadow: 0 0 15px var(--neon);
@@ -175,50 +157,37 @@ body.hovering .cursor-circle {
     box-shadow: 0 0 50px rgba(192, 254, 56, 0.15);
     z-index: 10; opacity: 1; transform: scale(1.1);
 }
-
 .card.active .card-icon { color: var(--neon); transform: scale(1.1); }
 .card.active .card-img { filter: brightness(1.2); }
 .card.active .live-overlay { opacity: 1; }
 .card.active .scanner-line { opacity: 0.5; animation: scan 2s linear infinite; }
-
 @keyframes scan { 0% { top: 0%; } 100% { top: 100%; } }
-
 .card:not(.active) { opacity: 0.3; transform: scale(0.85) rotateY(10deg); filter: grayscale(100%); }
 
 .info-panel {
     position: absolute; bottom: 80px; left: 60px;
     z-index: 20; max-width: 500px; pointer-events: none;
 }
-
 .info-panel button { pointer-events: auto; }
-
 .info-title {
     font-size: 56px; font-weight: 800; text-transform: uppercase;
     line-height: 0.9; margin-bottom: 10px; color: white;
     position: relative; display: inline-block;
 }
-
 .info-desc {
     font-size: 16px; color: #aaa; border-left: 3px solid var(--neon);
     padding-left: 15px; margin-bottom: 15px;
     opacity: 0; transform: translateX(-20px); transition: 0.4s ease 0.1s;
 }
-
 .creator-tag {
     font-size: 14px; color: var(--neon); font-family: 'Courier New', monospace;
     font-weight: 600; text-transform: uppercase;
     padding-left: 15px; margin-bottom: 20px;
     opacity: 0; transform: translateX(-20px); transition: 0.4s ease 0.2s;
     display: flex; align-items: center; gap: 8px;
-    cursor: pointer;
-    pointer-events: auto;
+    cursor: pointer; pointer-events: auto;
 }
-
-.creator-tag:hover {
-    text-shadow: 0 0 10px var(--neon);
-    text-decoration: underline;
-}
-
+.creator-tag:hover { text-shadow: 0 0 10px var(--neon); text-decoration: underline; }
 .info-panel.visible .info-desc { opacity: 1; transform: translateX(0); }
 .info-panel.visible .creator-tag { opacity: 0.8; transform: translateX(0); }
 
@@ -229,7 +198,6 @@ body.hovering .cursor-circle {
     letter-spacing: 2px; text-transform: uppercase;
     transition: 0.3s; opacity: 0; transform: translateY(20px);
 }
-
 .btn-launch:hover { background: var(--neon); color: black; box-shadow: 0 0 30px var(--neon); }
 .info-panel.visible .btn-launch { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
 
@@ -237,111 +205,141 @@ body.hovering .cursor-circle {
     position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
     display: flex; gap: 6px; z-index: 20; align-items: center;
 }
-
 .prog-seg {
     width: 40px; height: 4px; background: rgba(255,255,255,0.1);
     transition: 0.3s; border-radius: 2px;
 }
-
-.prog-seg.active {
-    background: var(--neon); box-shadow: 0 0 10px var(--neon);
-    height: 6px; width: 50px;
-}
-
+.prog-seg.active { background: var(--neon); box-shadow: 0 0 10px var(--neon); height: 6px; width: 50px; }
 .prog-counter {
     color: var(--neon); font-size: 12px; font-weight: 700; margin-left: 10px;
     letter-spacing: 1px; font-family: 'Courier New', monospace;
 }
 
-/* --- PERBAIKAN RESPONSIVE MOBILE --- */
+
+.card.article-card {
+    background: #0f0f0f;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    display: block; 
+    padding: 0;
+   
+    width: 400px !important; 
+    height: 480px !important;
+}
+
+.card-inner.inner-article {
+    display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;
+    width: 100%; height: 100%; transform: translateZ(0px);
+}
+
+.art-img-container {
+    width: 100%; height: 45%; position: relative; overflow: hidden;
+    border-bottom: 1px solid rgba(192, 254, 56, 0.2);
+}
+.art-img-container img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.card.active .art-img-container img { transform: scale(1.1); }
+
+.art-date {
+    position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.8);
+    color: var(--neon); font-size: 10px; padding: 4px 8px; border: 1px solid var(--neon);
+    font-weight: 700; letter-spacing: 1px;
+}
+
+
+.art-body { 
+    padding: 20px 25px; 
+    text-align: left; 
+    display: flex; 
+    flex-direction: column; 
+    height: 55%; 
+    justify-content: flex-start;
+    position: relative;
+}
+
+.art-body h3 {
+    font-size: 22px; 
+    color: white; 
+    font-weight: 700; 
+    line-height: 1.2; 
+    margin-bottom: 12px;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+}
+
+.art-desc-preview {
+    font-size: 14px; 
+    color: #999; 
+    line-height: 1.5;
+    display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+    margin-bottom: 15px;
+}
+
+
+.art-creator-link {
+    margin-top: auto; 
+    padding-top: 15px;
+    margin-bottom: 10px;
+    border-top: 1px solid rgba(255,255,255,0.08); 
+    font-size: 12px;
+    color: #888;
+    display: flex; align-items: center; gap: 8px;
+    cursor: pointer;
+}
+.art-creator-link:hover { color: var(--neon); }
+
+.read-btn {
+    font-size: 11px; color: var(--neon); font-weight: 700; letter-spacing: 1px;
+    display: flex; align-items: center; gap: 5px; opacity: 0.7;
+    margin-top: 5px;
+}
+.card.active .read-btn { opacity: 1; }
+.card.active .art-body h3 { color: var(--neon); text-shadow: 0 0 10px rgba(192, 254, 56, 0.3); }
+
+
 @media (max-width: 768px) {
-    :root {
-        --card-w: 200px; 
-        --card-h: 260px; /* Sedikit lebih kecil agar aman secara vertikal */
+ 
+    :root { --card-w: 200px; --card-h: 260px; }
+    
+    .card.article-card {
+        width: 300px !important;
+        height: 420px !important;
     }
     
-    .top-bar { 
-        top: 20px; left: 20px; right: 20px; 
-    }
+    .art-body { padding: 15px 20px; }
+    .art-body h3 { font-size: 20px; }
+    .art-desc-preview { font-size: 13px; -webkit-line-clamp: 3; }
+
+    .top-bar { top: 20px; left: 20px; right: 20px; border-bottom: none; }
+    .brand { font-size: 20px; }
+    .status-icons { gap: 10px; font-size: 12px; }
     
-    .brand { 
-        font-size: 20px; 
-    }
-    
-    .status-icons { 
-        gap: 10px; font-size: 12px; 
-    }
-    
-    /* Navigasi di Atas */
     .category-nav { 
-        top: 70px; left: 0; width: 100%;
+        top: 80px; left: 0; width: 100%;
         flex-direction: row; justify-content: center; 
-        gap: 20px; padding: 0 20px;
-        z-index: 30; /* Di atas carousel */
+        gap: 8px; padding: 10px; z-index: 30;
+        background: rgba(0,0,0,0.5); backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(192, 254, 56, 0.1);
     }
-    
     .cat-item { 
-        font-size: 12px; 
+        font-size: 10px; color: #777; padding: 6px 12px; 
+        border: 1px solid rgba(255,255,255,0.05); border-radius: 4px;
+        text-transform: uppercase; font-weight: 700; white-space: nowrap;
+        background: rgba(255,255,255,0.02);
     }
-    
     .cat-item.active { 
-        font-size: 14px; border-left: none; 
-        border-bottom: 2px solid var(--neon); 
-        padding-left: 0; padding-bottom: 5px; 
+        color: var(--neon); background: var(--neon-dim);
+        border: 1px solid var(--neon); font-size: 10px;
+        padding-left: 12px; border-left: 1px solid var(--neon);
+        text-shadow: 0 0 8px var(--neon); box-shadow: inset 0 0 15px var(--neon-dim);
     }
     
-    /* --- ZONA AMAN CAROUSEL (KUNCI PERBAIKAN) --- */
-    .carousel-view {
-        /* Hapus height: 100vh untuk mobile */
-        height: auto;
-        /* Gunakan positioning absolute untuk mendefinisikan 'kotak tengah' */
-        position: absolute;
-        top: 15%;    /* Jarak aman dari navigasi atas */
-        bottom: 35%; /* Jarak aman dari panel info bawah */
-        width: 100%;
-        /* Pastikan card ada di tengah kotak ini */
-        display: flex;
-        align-items: center; 
-        /* Reset padding jika ada */
-        padding: 0;
-    }
+    .carousel-view { top: 15%; bottom: 35%; }
+    .card.active { transform: scale(1.05); }
 
-    .card.active {
-        transform: scale(1.05);
-    }
-
-    /* Panel Info di Bawah */
-    .info-panel { 
-        left: 20px; right: 20px; 
-        bottom: 80px; /* Posisi tetap di bawah */
-        text-align: center; width: auto;
-        z-index: 30;
-    }
+    .info-panel { left: 20px; right: 20px; bottom: 80px; text-align: center; }
+    .info-panel:not(.visible) { display: none; } 
     
-    .info-title { 
-        font-size: 28px; margin-bottom: 5px;
-    }
-    
-    .info-desc { 
-        border: none; border-top: 2px solid var(--neon); 
-        padding-top: 10px; padding-left: 0; 
-        margin-bottom: 10px; font-size: 14px;
-    }
-    
-    .creator-tag {
-        justify-content: center; padding-left: 0; margin-bottom: 15px;
-    }
-    
-    .btn-launch {
-        padding: 10px 30px; font-size: 14px;
-    }
-
-    .progress-hud {
-        bottom: 30px;
-    }
-
+    .info-title { font-size: 28px; }
+    .info-desc { border: none; border-top: 2px solid var(--neon); padding-top: 10px; font-size: 14px; }
+    .creator-tag { justify-content: center; padding-left: 0; }
     .cursor-dot, .cursor-circle { display: none; }
     * { cursor: auto; }
-    .prog-seg { width: 15px; }
-    .prog-seg.active { width: 25px; }
 }
