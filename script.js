@@ -30,6 +30,8 @@ const db = [
             { id: 'raikufunblock', title: "Raiku Fun Block", creator: "realsir ./", creatorLink: "https://x.com/realsirandrew", icon: "fa-solid fa-images", image: "img/raikufunblock.png", link: "https://raiku-fun-block.vercel.app/", desc: "Discover a variety of games and contributions from realsir ./." },
             { id: 'raikupakketum', title: "Raiku Engagement Calculator", creator: "sptnode", creatorLink: "https://x.com/sptnode", icon: "fa-solid fa-images", image: "img/raikupakketum.png", link: "https://raiku.pak-ketum.com/", desc: "Community engagement calculator content raiku." },
             { id: 'raikubingo', title: "Raiku Bingo", creator: "Kersa", creatorLink: "https://x.com/kersa1n", icon: "fa-solid fa-images", image: "img/raikubingo.png", link: "https://bingo.raiku.space/", desc: "What your Raiku Bingo? Fill it." },
+            { id: 'flappyryku', title: "Flappy Ryku", creator: "Melori", creatorLink: "https://x.com/MeloriKt", icon: "fa-solid fa-images", image: "img/flappyryku.png", link: "https://flappy-melori-projects.vercel.app/", desc: "Just like the name, you tap Ryku through the pipes and try to get the highest score possible." },
+            { id: 'raikugameboy', title: "Raiku Gameboy", creator: "Victoren", creatorLink: "https://x.com/0xvictoren/", icon: "fa-solid fa-images", image: "img/raikugameboy.png", link: "https://raiku-gameboy.vercel.app/", desc: "Play Raiku Gameboy now!" },
 
         ]
     }
