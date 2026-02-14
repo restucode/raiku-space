@@ -86,9 +86,13 @@ body.hovering .cursor-circle { width: 60px; height: 60px; background: var(--neon
 
 .carousel-view {
     width: 100%; height: 100vh;
-    display: flex; align-items: center;
+    display: flex; 
+    align-items: center;
+    justify-content: flex-start;
     overflow: hidden; touch-action: pan-y; 
+    position: relative;
 }
+
 .track {
     display: flex; gap: var(--gap);
     padding-left: 50vw; padding-right: 50vw;
@@ -215,13 +219,11 @@ body.hovering .cursor-circle { width: 60px; height: 60px; background: var(--neon
     letter-spacing: 1px; font-family: 'Courier New', monospace;
 }
 
-
 .card.article-card {
     background: #0f0f0f;
     border: 1px solid rgba(255, 255, 255, 0.15);
     display: block; 
     padding: 0;
-   
     width: 400px !important; 
     height: 480px !important;
 }
@@ -243,7 +245,6 @@ body.hovering .cursor-circle { width: 60px; height: 60px; background: var(--neon
     color: var(--neon); font-size: 10px; padding: 4px 8px; border: 1px solid var(--neon);
     font-weight: 700; letter-spacing: 1px;
 }
-
 
 .art-body { 
     padding: 20px 25px; 
@@ -272,7 +273,6 @@ body.hovering .cursor-circle { width: 60px; height: 60px; background: var(--neon
     margin-bottom: 15px;
 }
 
-
 .art-creator-link {
     margin-top: auto; 
     padding-top: 15px;
@@ -293,53 +293,93 @@ body.hovering .cursor-circle { width: 60px; height: 60px; background: var(--neon
 .card.active .read-btn { opacity: 1; }
 .card.active .art-body h3 { color: var(--neon); text-shadow: 0 0 10px rgba(192, 254, 56, 0.3); }
 
-
 @media (max-width: 768px) {
  
-    :root { --card-w: 200px; --card-h: 260px; }
-    
-    .card.article-card {
-        width: 300px !important;
-        height: 420px !important;
+    :root { 
+        --card-w: 200px; 
+        --card-h: 40vh; 
     }
     
-    .art-body { padding: 15px 20px; }
-    .art-body h3 { font-size: 20px; }
-    .art-desc-preview { font-size: 13px; -webkit-line-clamp: 3; }
+    .carousel-view { 
+        top: 0; bottom: 0; left: 0; right: 0;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 0;
+        position: fixed;
+    }
 
-    .top-bar { top: 20px; left: 20px; right: 20px; border-bottom: none; }
+    .top-bar { 
+        top: 20px; left: 20px; right: 20px; 
+        border-bottom: none; 
+        padding-bottom: 0;
+        z-index: 50;
+    }
     .brand { font-size: 20px; }
     .status-icons { gap: 10px; font-size: 12px; }
     
     .category-nav { 
-        top: 80px; left: 0; width: 100%;
+        top: 70px; 
+        left: 0; width: 100%;
         flex-direction: row; justify-content: center; 
-        gap: 8px; padding: 10px; z-index: 30;
-        background: rgba(0,0,0,0.5); backdrop-filter: blur(10px);
-        border-bottom: 1px solid rgba(192, 254, 56, 0.1);
+        gap: 8px; padding: 5px 0; 
+        z-index: 40;
+        background: transparent;
+        backdrop-filter: none;
+        border-bottom: none;
     }
+
     .cat-item { 
-        font-size: 10px; color: #777; padding: 6px 12px; 
-        border: 1px solid rgba(255,255,255,0.05); border-radius: 4px;
+        font-size: 11px; color: #aaa; padding: 6px 12px; 
+        border: 1px solid rgba(255,255,255,0.1); border-radius: 20px;
         text-transform: uppercase; font-weight: 700; white-space: nowrap;
-        background: rgba(255,255,255,0.02);
+        background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
     }
     .cat-item.active { 
         color: var(--neon); background: var(--neon-dim);
-        border: 1px solid var(--neon); font-size: 10px;
+        border: 1px solid var(--neon); font-size: 11px;
         padding-left: 12px; border-left: 1px solid var(--neon);
-        text-shadow: 0 0 8px var(--neon); box-shadow: inset 0 0 15px var(--neon-dim);
     }
     
-    .carousel-view { top: 15%; bottom: 35%; }
+    .card.article-card {
+        width: 300px !important; 
+        height: 50vh !important;
+        max-height: 440px;
+    }
+    
+    .art-img-container { height: 40%; }
+    .art-body { height: 60%; padding: 15px; }
+    .art-body h3 { font-size: 18px; line-height: 1.1; margin-bottom: 8px; }
+    .art-desc-preview { font-size: 12px; -webkit-line-clamp: 2; margin-bottom: 10px; }
+    .art-creator-link { padding-top: 8px; font-size: 10px; }
+    
     .card.active { transform: scale(1.05); }
 
-    .info-panel { left: 20px; right: 20px; bottom: 80px; text-align: center; }
-    .info-panel:not(.visible) { display: none; } 
+    .info-panel { 
+        left: 20px; right: 20px; 
+        bottom: 50px;
+        text-align: center; 
+        pointer-events: none; 
+        z-index: 50;
+    }
     
-    .info-title { font-size: 28px; }
-    .info-desc { border: none; border-top: 2px solid var(--neon); padding-top: 10px; font-size: 14px; }
-    .creator-tag { justify-content: center; padding-left: 0; }
+    .info-panel:not(.visible) { display: none; } 
+    .info-title { font-size: 26px; margin-bottom: 5px; }
+    .info-desc { border: none; border-top: 1px solid var(--neon); padding-top: 8px; font-size: 13px; color: #ccc; }
+    .creator-tag { justify-content: center; padding-left: 0; margin-bottom: 10px; }
+    .btn-launch { padding: 10px 20px; font-size: 12px; pointer-events: auto; }
+    
+    .progress-hud { bottom: 20px; }
     .cursor-dot, .cursor-circle { display: none; }
     * { cursor: auto; }
+}
+
+@media (max-width: 768px) and (max-height: 700px) {
+    :root { --card-h: 35vh; }
+    .card.article-card { height: 45vh !important; }
+    .info-title { font-size: 22px; }
+    .info-panel { bottom: 40px; }
+    .category-nav { top: 60px; }
 }
